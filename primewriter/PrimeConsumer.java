@@ -15,7 +15,7 @@ class PrimeConsumer implements Runnable {
             if (nextConsumed == PrimeProducer.DONE_SIGNAL) {
                 break;
             }
-            action.run();
+            action.run(nextConsumed);
         }
     }
 }

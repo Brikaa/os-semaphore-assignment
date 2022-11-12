@@ -7,14 +7,18 @@ public class Semaphore {
         this.value = value;
     }
 
-    public void try() {
+    public synchronized void tryToAcquire() {
         --value;
         if (value < 0) {
-            wait();
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
         }
     }
 
-    public void signal() {
+    public synchronized void signal() {
         ++value;
         if (value <= 0) {
             notify();

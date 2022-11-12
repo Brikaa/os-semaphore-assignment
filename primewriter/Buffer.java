@@ -10,22 +10,22 @@ public class Buffer {
 
     public Buffer(int slots) {
         this.full = new Semaphore(0);
-        this.empty = new Semaphore(this.full);
+        this.empty = new Semaphore(slots);
         this.lock = new Semaphore(1);
         this.queue = new LinkedList<Integer>();
     }
 
     public void produce(int number) {
-        empty.try();
-        lock.try();
-        queue.add(i);
+        empty.tryToAcquire();
+        lock.tryToAcquire();
+        queue.add(number);
         lock.signal();
         full.signal();
     }
 
-    public int consume(int number) {
-        full.try();
-        lock.try();
+    public int consume() {
+        full.tryToAcquire();
+        lock.tryToAcquire();
         int nextConsumed = queue.remove();
         lock.signal();
         empty.signal();

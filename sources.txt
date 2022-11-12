@@ -1,3 +1,9 @@
+./primewriter/RunnableAction.java
+./primewriter/Semaphore.java
+./primewriter/Buffer.java
 ./primewriter/App.java
 ./primewriter/Util.java
+./primewriter/PrimeConsumer.java
+./primewriter/PrimeProducer.java
+./primewriter/AfterConsumption.java
 ./tests/Main.java

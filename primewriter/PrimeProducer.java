@@ -17,6 +17,6 @@ class PrimeProducer implements Runnable {
                 buffer.produce(i);
             }
         }
-        produce(DONE_SIGNAL);
+        buffer.produce(DONE_SIGNAL);
     }
 }
