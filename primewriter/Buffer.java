@@ -15,36 +15,21 @@ public class Buffer {
         this.queue = new LinkedList<Integer>();
     }
 
-    public void waitForProducedSlot() {
-        full.wait();
-    }
-
-    public void waitForEmptySlot() {
-        empty.wait();
-    }
-
-    public void signalProduced() {
+    public void produce(int number) {
+        empty.try();
+        lock.try();
+        queue.add(i);
+        lock.signal();
         full.signal();
     }
 
-    public void signalConsumed() {
-        empty.signal();
-    }
-
-    public void acquireLock() {
-        lock.wait();
-    }
-
-    public void releaseLock() {
-        lock.signal();
-    }
-
-    public void produce(int number) {
-        queue.add(number);
-    }
-
     public int consume(int number) {
-        return queue.remove();
+        full.try();
+        lock.try();
+        int nextConsumed = queue.remove();
+        lock.signal();
+        empty.signal();
+        return nextConsumed;
     }
 
 }

@@ -2,21 +2,20 @@ package primewriter;
 
 class PrimeConsumer implements Runnable {
     private Buffer buffer;
+    RunnableAction action;
 
-    PrimeConsumer(Buffer buffer) {
+    PrimeConsumer(Buffer buffer, RunnableAction action) {
         this.buffer = buffer;
+        this.action = action;
     }
 
     public void run() {
         while (true) {
-            buffer.waitForProducedSlot();
-            buffer.acquireLock();
             int nextConsumed = buffer.consume();
-            buffer.releaseLock();
-            buffer.signalConsumed();
             if (nextConsumed == PrimeProducer.DONE_SIGNAL) {
                 break;
             }
+            action.run();
         }
     }
 }

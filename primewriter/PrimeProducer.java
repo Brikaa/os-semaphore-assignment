@@ -1,6 +1,7 @@
 package primewriter;
 
 class PrimeProducer implements Runnable {
+    // TODO: create a dedicated notification system to also be used in the stopwatch
     public static int DONE_SIGNAL = -1;
     private long max;
     private Buffer buffer;
@@ -10,18 +11,10 @@ class PrimeProducer implements Runnable {
         this.max = max;
     }
 
-    private void produce(int i) {
-        buffer.waitForEmptySlot();
-        buffer.acquireLock();
-        buffer.produce(i);
-        buffer.releaseLock();
-        buffer.signalProduced();
-    }
-
     public void run() {
         for (int i = 0; i < max; ++i) {
             if (Util.isPrime(i)) {
-                produce(i);
+                buffer.produce(i);
             }
         }
         produce(DONE_SIGNAL);
