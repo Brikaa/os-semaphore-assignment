@@ -3,7 +3,7 @@ package primewriter.jobs;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class WriteFileJob implements Job {
+public class WriteFileJob implements ConsumptionJob {
     private String outputFileName;
     private FileWriter fileWriter;
 

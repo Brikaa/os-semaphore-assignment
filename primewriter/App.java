@@ -10,12 +10,12 @@ public class App {
         Buffer buffer = new Buffer(8);
         long max = 153;
 
-        Job consumptionJob = new WriteFileJob("test.txt");
+        ConsumptionJob consumptionJob = new WriteFileJob("test.txt");
         ProductionJob productionJob = new GeneratePrimeJob(max);
-        PrimeProducer primeProducer = new PrimeProducer(buffer, productionJob);
-        PrimeConsumer primeConsumer = new PrimeConsumer(buffer, consumptionJob);
+        Producer Producer = new Producer(buffer, productionJob);
+        Consumer Consumer = new Consumer(buffer, consumptionJob);
 
-        new Thread(primeProducer).start();
-        new Thread(primeConsumer).start();
+        new Thread(Producer).start();
+        new Thread(Consumer).start();
     }
 }

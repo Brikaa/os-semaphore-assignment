@@ -1,13 +1,13 @@
 package primewriter.threading;
 
-import primewriter.jobs.Job;
+import primewriter.jobs.ConsumptionJob;
 import primewriter.jobs.JobException;
 
-public class PrimeConsumer implements Runnable {
+public class Consumer implements Runnable {
     private Buffer buffer;
-    Job job;
+    ConsumptionJob job;
 
-    public PrimeConsumer(Buffer buffer, Job job) {
+    public Consumer(Buffer buffer, ConsumptionJob job) {
         this.buffer = buffer;
         this.job = job;
     }
@@ -17,7 +17,7 @@ public class PrimeConsumer implements Runnable {
             job.initiate();
             while (true) {
                 int nextConsumed = buffer.consume();
-                if (nextConsumed == PrimeProducer.DONE_SIGNAL) {
+                if (nextConsumed == Producer.DONE_SIGNAL) {
                     break;
                 }
                 job.run(nextConsumed);

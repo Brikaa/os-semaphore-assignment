@@ -2,13 +2,13 @@ package primewriter.threading;
 
 import primewriter.jobs.ProductionJob;
 
-public class PrimeProducer implements Runnable {
+public class Producer implements Runnable {
     // TODO: create a dedicated notification system to also be used in the stopwatch
     public static int DONE_SIGNAL = -1;
     private ProductionJob job;
     private Buffer buffer;
 
-    public PrimeProducer(Buffer buffer, ProductionJob job) {
+    public Producer(Buffer buffer, ProductionJob job) {
         this.buffer = buffer;
         this.job = job;
     }
