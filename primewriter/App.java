@@ -9,6 +9,8 @@ public class App {
     public static void main(String[] args) throws IOException {
         /*
             Ideas for GUI:
+            - Create a package, primewriter.gui
+
             - Use observer pattern to notify the stopwatch when the consumer is done.
             - Create a notification class that is passed to the consumer
             - The stop watch is attached to the notification object
