@@ -16,8 +16,8 @@ public class Consumer implements Runnable {
         try {
             job.initiate();
             while (true) {
-                int nextConsumed = buffer.consume();
-                if (nextConsumed == Producer.DONE_SIGNAL) {
+                Object nextConsumed = buffer.consume();
+                if (nextConsumed.equals(Producer.DONE_SIGNAL)) {
                     break;
                 }
                 job.run(nextConsumed);

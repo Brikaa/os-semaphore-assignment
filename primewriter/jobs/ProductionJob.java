@@ -2,7 +2,7 @@ package primewriter.jobs;
 
 public interface ProductionJob {
     public void initiate();
-    public int run();
+    public Object run();
     public void cleanup();
     public boolean isDone();
 }

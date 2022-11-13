@@ -6,9 +6,11 @@ import java.io.IOException;
 public class WriteFileJob implements ConsumptionJob {
     private String outputFileName;
     private FileWriter fileWriter;
+    private String firstWrite;
 
     public WriteFileJob(String outputFileName) {
         this.outputFileName = outputFileName;
+        firstWrite = "";
     }
 
     public void initiate() throws JobException {
@@ -19,16 +21,23 @@ public class WriteFileJob implements ConsumptionJob {
         }
     }
 
-    public void run(int number) throws JobException {
+    public void run(Object obj) throws JobException {
         try {
-            fileWriter.write(number + " ");
+            fileWriter.write(firstWrite + "\"" + obj.toString() + "\"");
+            firstWrite = ", ";
         } catch (IOException e) {
             throw new JobRunException("Can't write to file: " + outputFileName);
         }
-        System.out.println(number);
+        System.out.println(obj);
     }
 
     public void cleanup() throws JobException {
+        firstWrite = "";
+        try {
+            fileWriter.write("\n");
+        } catch (IOException e) {
+            throw new JobCleanupException("Can't write final newline to file: " + outputFileName);
+        }
         try {
             fileWriter.close();
         } catch (IOException e) {

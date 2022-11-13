@@ -34,7 +34,7 @@ public class GeneratePrimeJob implements ProductionJob {
         }
     }
 
-    public int run() {
+    public Integer run() {
         int temp = lastCheckedPrime;
         fillPrimesUsingLastChecked();
         updateNextPrimeAndCheckDone();

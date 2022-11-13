@@ -6,27 +6,27 @@ public class Buffer {
     private Semaphore full;
     private Semaphore empty;
     private Semaphore lock;
-    private Queue<Integer> queue;
+    private Queue<Object> queue;
 
     public Buffer(int slots) {
         this.full = new Semaphore(0);
         this.empty = new Semaphore(slots);
         this.lock = new Semaphore(1);
-        this.queue = new LinkedList<Integer>();
+        this.queue = new LinkedList<Object>();
     }
 
-    public void produce(int number) {
+    public void produce(Object message) {
         empty.tryToAcquire();
         lock.tryToAcquire();
-        queue.add(number);
+        queue.add(message);
         lock.signal();
         full.signal();
     }
 
-    public int consume() {
+    public Object consume() {
         full.tryToAcquire();
         lock.tryToAcquire();
-        int nextConsumed = queue.remove();
+        Object nextConsumed = queue.remove();
         lock.signal();
         empty.signal();
         return nextConsumed;
