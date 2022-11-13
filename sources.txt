@@ -7,9 +7,7 @@
 ./primewriter/jobs/Job.java
 ./primewriter/jobs/JobException.java
 ./primewriter/App.java
-./primewriter/Util.java
 ./primewriter/threading/Semaphore.java
 ./primewriter/threading/Buffer.java
 ./primewriter/threading/PrimeConsumer.java
 ./primewriter/threading/PrimeProducer.java
-./tests/Main.java
