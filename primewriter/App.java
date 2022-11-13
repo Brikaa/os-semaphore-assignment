@@ -18,6 +18,7 @@ public class App {
             - Use observer pattern to write to both file and label
             - change WriteFileJob to WriteJob
             - create a Writable class (the subscriber)
+            - WriteJob takes an array of Writable
             - WriteJob.run() calls write() in the Writable object
             - Adapter pattern is used to make the file and the label a Writable
             - they would both provide a write() method
