@@ -29,7 +29,7 @@ public class GeneratePrimeJob implements ProductionJob {
 
     public void initiate() {
         primes = new boolean[maximumNumber + 1];
-        for (int i = 0; i < maximumNumber; ++i) {
+        for (int i = 0; i <= maximumNumber; ++i) {
             primes[i] = true;
         }
     }
@@ -43,7 +43,7 @@ public class GeneratePrimeJob implements ProductionJob {
 
     public void cleanup() {
         lastCheckedPrime = 2;
-        done = false;
+        done = lastCheckedPrime > maximumNumber;
     }
 
     public boolean isDone() {
