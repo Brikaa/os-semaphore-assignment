@@ -1,24 +1,24 @@
 package primewriter.threading;
 
-import primewriter.Util;
+import primewriter.jobs.ProductionJob;
 
 public class PrimeProducer implements Runnable {
     // TODO: create a dedicated notification system to also be used in the stopwatch
     public static int DONE_SIGNAL = -1;
-    private long max;
+    private ProductionJob job;
     private Buffer buffer;
 
-    public PrimeProducer(Buffer buffer, long max) {
+    public PrimeProducer(Buffer buffer, ProductionJob job) {
         this.buffer = buffer;
-        this.max = max;
+        this.job = job;
     }
 
     public void run() {
-        for (int i = 0; i < max; ++i) {
-            if (Util.isPrime(i)) {
-                buffer.produce(i);
-            }
+        job.initiate();
+        while (!job.isDone()) {
+            buffer.produce(job.run());
         }
         buffer.produce(DONE_SIGNAL);
+        job.cleanup();
     }
 }

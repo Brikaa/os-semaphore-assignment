@@ -8,14 +8,14 @@ import java.io.IOException;
 public class App {
     public static void main(String[] args) throws IOException {
         Buffer buffer = new Buffer(8);
-        long max = 150;
+        long max = 153;
 
-        WriteFileJob job = new WriteFileJob("test.txt");
-        PrimeProducer primeProducer = new PrimeProducer(buffer, max);
-        PrimeConsumer primeConsumer = new PrimeConsumer(buffer, job);
-        Thread consumerThread = new Thread(primeConsumer);
+        Job consumptionJob = new WriteFileJob("test.txt");
+        ProductionJob productionJob = new GeneratePrimeJob(max);
+        PrimeProducer primeProducer = new PrimeProducer(buffer, productionJob);
+        PrimeConsumer primeConsumer = new PrimeConsumer(buffer, consumptionJob);
 
         new Thread(primeProducer).start();
-        consumerThread.start();
+        new Thread(primeConsumer).start();
     }
 }
