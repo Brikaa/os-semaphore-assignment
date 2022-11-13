@@ -1,4 +1,4 @@
-package primewriter;
+package primewriter.threading;
 
 public class Semaphore {
     private int value;

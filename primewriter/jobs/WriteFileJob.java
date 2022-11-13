@@ -1,4 +1,4 @@
-package primewriter;
+package primewriter.jobs;
 
 import java.io.FileWriter;
 import java.io.IOException;

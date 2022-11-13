@@ -1,12 +1,14 @@
-package primewriter;
+package primewriter.threading;
 
-class PrimeProducer implements Runnable {
+import primewriter.Util;
+
+public class PrimeProducer implements Runnable {
     // TODO: create a dedicated notification system to also be used in the stopwatch
     public static int DONE_SIGNAL = -1;
     private long max;
     private Buffer buffer;
 
-    PrimeProducer(Buffer buffer, long max) {
+    public PrimeProducer(Buffer buffer, long max) {
         this.buffer = buffer;
         this.max = max;
     }

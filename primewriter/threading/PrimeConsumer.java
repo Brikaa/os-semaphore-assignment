@@ -1,10 +1,13 @@
-package primewriter;
+package primewriter.threading;
 
-class PrimeConsumer implements Runnable {
+import primewriter.jobs.Job;
+import primewriter.jobs.JobException;
+
+public class PrimeConsumer implements Runnable {
     private Buffer buffer;
     Job job;
 
-    PrimeConsumer(Buffer buffer, Job job) {
+    public PrimeConsumer(Buffer buffer, Job job) {
         this.buffer = buffer;
         this.job = job;
     }

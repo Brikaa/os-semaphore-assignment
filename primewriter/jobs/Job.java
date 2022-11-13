@@ -1,4 +1,4 @@
-package primewriter;
+package primewriter.jobs;
 
 public interface Job {
     public void initiate() throws JobException;

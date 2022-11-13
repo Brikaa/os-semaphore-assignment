@@ -1,5 +1,7 @@
 package primewriter;
 
+import primewriter.threading.*;
+import primewriter.jobs.*;
 import java.io.FileWriter;
 import java.io.IOException;
 
