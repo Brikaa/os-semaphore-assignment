@@ -15,13 +15,9 @@ public class App {
             - The consumer calls notification.notify()
             - the notification object should notify the stopwatch (the attached subscriber) to stop
 
-            - Use observer pattern to write to both file and label
-            - change WriteFileJob to WriteJob
-            - create a Writable class (the subscriber)
-            - WriteJob takes an array of Writable
-            - WriteJob.run() calls write() in the Writable object
-            - Adapter pattern is used to make the file and the label a Writable
-            - they would both provide a write() method
+            - Maybe create a WriteLabelJob to be able to write to both the file and label at the same time
+            - Consumer then receives an array of jobs
+
         */
         Buffer buffer = new Buffer(8);
         int max = 150;
