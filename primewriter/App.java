@@ -8,7 +8,7 @@ import java.io.IOException;
 public class App {
     public static void main(String[] args) throws IOException {
         Buffer buffer = new Buffer(8);
-        long max = 153;
+        int max = 150;
 
         ConsumptionJob consumptionJob = new WriteFileJob("test.txt");
         ProductionJob productionJob = new GeneratePrimeJob(max);
