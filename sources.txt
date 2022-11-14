@@ -8,6 +8,7 @@
 ./primewriter/jobs/WriteFileJob.java
 ./primewriter/jobs/WriteLabelJob.java
 ./primewriter/jobs/ConsumptionJobList.java
+./primewriter/jobs/StopWatchJob.java
 ./primewriter/jobs/JobException.java
 ./primewriter/App.java
 ./primewriter/threading/Consumer.java

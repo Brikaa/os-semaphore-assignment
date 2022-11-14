@@ -25,13 +25,15 @@ public class App {
          * (to avoid over-updating the GUI), this could be used with the WriteLabelJob and the StopWatchJob
          */
         Buffer buffer = new Buffer(8);
-        int max = 50;
+        int max = 10000000;
 
         JFrame mainFrame = new JFrame();
         mainFrame.setTitle("Prime Writer");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JLabel lastPrimeLabel = new JLabel();
+        JLabel stopWatchLabel = new JLabel();
         mainFrame.add(lastPrimeLabel);
+        mainFrame.add(stopWatchLabel);
 
         ProductionJob generatePrimeJob = new GeneratePrimeJob(max);
         Producer Producer = new Producer(buffer, generatePrimeJob);
@@ -39,7 +41,8 @@ public class App {
         ConsumptionJobList cJobList = new ConsumptionJobList();
         cJobList
             .addJob(new WriteFileJob("test.txt"))
-            .addJob(new PeriodicJob(new WriteLabelJob(lastPrimeLabel), 500));
+            .addJob(new PeriodicJob(new WriteLabelJob(lastPrimeLabel), 500))
+            .addJob(new PeriodicJob(new StopWatchJob(stopWatchLabel), 500));
         Consumer Consumer = new Consumer(buffer, cJobList);
 
         mainFrame.setVisible(true);
