@@ -10,26 +10,24 @@ public class App {
          * Ideas for GUI:
          * - Create a package, primewriter.gui
          *
-         * - Use observer pattern to notify the stopwatch when the consumer is done.
-         * - Create a notification class that is passed to the consumer
-         * - The stop watch is attached to the notification object
-         * - The consumer calls notification.notify()
-         * - the notification object should notify the stopwatch (the attached
-         * subscriber) to stop
+         * Make a StopWatchJob, initiate(), and cleanup() set the stopwatch to zero, run() increments it to the
+         * time delta since it was last run
          *
          * - Maybe create a WriteLabelJob to be able to write to both the file and label
          * at the same time
          * - Consumer then receives an array of jobs
          *
+         * - Create a LazyJob adapter that only runs the job after a certain number of run() calls
+         * (to avoid over-updating the GUI), this could be used with the WriteLabelJob and the StopWatchJob
          */
         Buffer buffer = new Buffer(8);
         int max = 150;
 
         ConsumptionJob writeFileJob = new WriteFileJob("test.txt");
-        ProductionJob productionJob = new GeneratePrimeJob(max);
+        ProductionJob generatePrimeJob = new GeneratePrimeJob(max);
         ConsumptionJobList cJobList = new ConsumptionJobList();
         cJobList.addJob(writeFileJob);
-        Producer Producer = new Producer(buffer, productionJob);
+        Producer Producer = new Producer(buffer, generatePrimeJob);
         Consumer Consumer = new Consumer(buffer, cJobList);
 
         new Thread(Producer).start();
