@@ -14,7 +14,7 @@ import java.awt.GridBagConstraints;
 public class App {
     public static void main(String[] args) throws IOException {
         Buffer buffer = new Buffer(8);
-        int max = 10000000;
+        int max = 50;
 
         JFrame mainFrame = new JFrame();
         mainFrame.setTitle("Prime Writer");
@@ -30,9 +30,7 @@ public class App {
 		c.gridy = 0;
         c.ipadx = 10;
         contentPane.add(lastPrimeLabel, c);
-        c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
-		c.gridy = 0;
         contentPane.add(stopWatchLabel, c);
 
         ProductionJob generatePrimeJob = new GeneratePrimeJob(max);

@@ -3,6 +3,8 @@ package primewriter.jobs;
 import java.util.LinkedList;
 import java.util.List;
 
+import primewriter.jobs.exceptions.JobException;
+
 public class ConsumptionJobList implements ConsumptionJob {
     List<ConsumptionJob> jobs;
 

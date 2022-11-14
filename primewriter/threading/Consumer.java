@@ -1,7 +1,7 @@
 package primewriter.threading;
 
 import primewriter.jobs.ConsumptionJobList;
-import primewriter.jobs.JobException;
+import primewriter.jobs.exceptions.JobException;
 
 public class Consumer implements Runnable {
     private Buffer buffer;
