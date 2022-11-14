@@ -28,7 +28,6 @@ public class WriteFileJob implements ConsumptionJob {
         } catch (IOException e) {
             throw new JobRunException("Can't write to file: " + outputFileName);
         }
-        System.out.println(obj);
     }
 
     public void cleanup() throws JobException {
