@@ -13,7 +13,7 @@ public class App {
          * Ideas for GUI:
          * - Create a package, primewriter.gui
          *
-         * Make a StopWatchJob, initiate(), and cleanup() set the stopwatch to zero, run() increments it to the
+         * Make a StopWatchJob, initiate() sets the stopwatch to zero, run() increments it to the
          * time delta since it was last run
          *
          * - Make a WriteLabelJob to be able to write to both the file and label
@@ -25,7 +25,7 @@ public class App {
          * (to avoid over-updating the GUI), this could be used with the WriteLabelJob and the StopWatchJob
          */
         Buffer buffer = new Buffer(8);
-        int max = 10000000;
+        int max = 50;
 
         JFrame mainFrame = new JFrame();
         mainFrame.setTitle("Prime Writer");
@@ -37,7 +37,9 @@ public class App {
         Producer Producer = new Producer(buffer, generatePrimeJob);
 
         ConsumptionJobList cJobList = new ConsumptionJobList();
-        cJobList.addJob(new WriteFileJob("test.txt")).addJob(new WriteLabelJob(lastPrimeLabel));
+        cJobList
+            .addJob(new WriteFileJob("test.txt"))
+            .addJob(new PeriodicJob(new WriteLabelJob(lastPrimeLabel), 500));
         Consumer Consumer = new Consumer(buffer, cJobList);
 
         mainFrame.setVisible(true);

@@ -1,6 +1,7 @@
 ./primewriter/jobs/JobCleanupException.java
 ./primewriter/jobs/JobRunException.java
 ./primewriter/jobs/ConsumptionJob.java
+./primewriter/jobs/PeriodicJob.java
 ./primewriter/jobs/ProductionJob.java
 ./primewriter/jobs/JobInitializationException.java
 ./primewriter/jobs/GeneratePrimeJob.java
