@@ -5,6 +5,7 @@
 ./primewriter/jobs/JobInitializationException.java
 ./primewriter/jobs/GeneratePrimeJob.java
 ./primewriter/jobs/WriteFileJob.java
+./primewriter/jobs/ConsumptionJobList.java
 ./primewriter/jobs/JobException.java
 ./primewriter/App.java
 ./primewriter/threading/Consumer.java
