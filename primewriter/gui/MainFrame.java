@@ -27,7 +27,7 @@ public class MainFrame extends JFrame {
         this.counterLabel = counterLabel;
         this.stopWatchLabel = stopWatchLabel;
         this.maximumNumberSpinner = new JSpinner(new SpinnerNumberModel(10000000, 2, 1000000000, 1));
-        this.maximumNumberSpinner = new JSpinner(new SpinnerNumberModel(8, 2, 1000000000, 1));
+        this.bufferSizeSpinner = new JSpinner(new SpinnerNumberModel(8, 2, 1000000000, 1));
         this.outputFileNameTextField = new JTextField("primes.txt");
         this.startButton = new JButton("Start producer");
     }
@@ -50,7 +50,7 @@ public class MainFrame extends JFrame {
         c.gridy = 1;
         contentPane.add(new JLabel("Buffer size"), c);
         c.gridx = 1;
-        contentPane.add(counterLabel, c);
+        contentPane.add(bufferSizeSpinner, c);
         c.gridx = 0;
         c.gridy = 2;
         contentPane.add(new JLabel("Output file"), c);
