@@ -30,6 +30,7 @@ public class App {
         Consumer Consumer = new Consumer(buffer, cJobList);
 
         MainFrame mainFrame = new MainFrame(lastPrimeLabel, counterLabel, stopWatchLabel);
+        mainFrame.pack();
         mainFrame.setVisible();
 
         // new Thread(Producer).start();

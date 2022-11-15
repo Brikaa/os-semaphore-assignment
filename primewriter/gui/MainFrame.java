@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.awt.Container;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+import java.awt.event.*;  
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -76,6 +77,8 @@ public class MainFrame extends JFrame {
                 startButton
             ))
         );
+
+        //startButton.addActionListener();
 
         // JPanel outputPanel = new JPanel();
         // contentPane.add(outputPanel);
