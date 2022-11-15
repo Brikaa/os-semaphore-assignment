@@ -13,6 +13,7 @@
 ./primewriter/jobs/ConsumptionJobList.java
 ./primewriter/jobs/StopWatchJob.java
 ./primewriter/App.java
+./primewriter/gui/MainFrame.java
 ./primewriter/threading/Consumer.java
 ./primewriter/threading/Semaphore.java
 ./primewriter/threading/Buffer.java
