@@ -1,13 +1,24 @@
 package primewriter.gui;
 
+import primewriter.jobs.*;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 
+<<<<<<< Updated upstream
 import java.awt.Container;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.event.*;  
+=======
+//import java.awt.Container;
+//import java.awt.GridBagLayout;
+//import java.awt.GridBagConstraints;
+import java.awt.*;
+import java.awt.event.*;
+>>>>>>> Stashed changes
 
+import javax.print.attribute.standard.RequestingUserName;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -26,6 +37,7 @@ public class MainFrame extends JFrame {
     private JTextField outputFileNameTextField;
     private JButton startButton;
     private static final String APP_NAME = "Prime writer";
+    private Command command;
 
     public MainFrame(JLabel lastPrimeLabel, JLabel counterLabel, JLabel stopWatchLabel) {
         super();
@@ -57,6 +69,13 @@ public class MainFrame extends JFrame {
         }
     }
 
+    public String[] GetValues() {
+        String[] array;
+        array = new String[] { outputFileNameTextField.getText(), maximumNumberSpinner.getValue().toString(),
+                bufferSizeSpinner.getValue().toString() };
+        return array;
+    }
+
     public void setVisible() {
         this.setTitle(APP_NAME);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,16 +86,14 @@ public class MainFrame extends JFrame {
         inputPanel.setLayout(new GridBagLayout());
 
         doubleGrid(
-            inputPanel, new LinkedList<JComponent>(Arrays.asList(
-                new JLabel("Maximum number"),
-                maximumNumberSpinner,
-                new JLabel("Buffer size"),
-                bufferSizeSpinner,
-                new JLabel("Output file"),
-                outputFileNameTextField,
-                startButton
-            ))
-        );
+                inputPanel, new LinkedList<JComponent>(Arrays.asList(
+                        new JLabel("Maximum number"),
+                        maximumNumberSpinner,
+                        new JLabel("Buffer size"),
+                        bufferSizeSpinner,
+                        new JLabel("Output file"),
+                        outputFileNameTextField,
+                        startButton)));
 
         //startButton.addActionListener();
 
@@ -85,8 +102,19 @@ public class MainFrame extends JFrame {
         // outputPanel.setLayout(new GridBagLayout());
         // GridBagConstraints outputPanelConstraints = new GridBagConstraints();
 
-
+        // startButton.setEnabled(true);
+        startButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                command.execute();
+            }
+        });
+        // startButton.setEnabled(false);
 
         this.setVisible(true);
+
+    }
+
+    public void setCommand(Command command) {
+        this.command = command;
     }
 }
