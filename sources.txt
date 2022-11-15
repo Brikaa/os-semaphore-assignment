@@ -1,3 +1,4 @@
+./primewriter/jobs/CounterJob.java
 ./primewriter/jobs/exceptions/JobCleanupException.java
 ./primewriter/jobs/exceptions/JobRunException.java
 ./primewriter/jobs/exceptions/JobInitializationException.java
@@ -8,6 +9,7 @@
 ./primewriter/jobs/GeneratePrimeJob.java
 ./primewriter/jobs/WriteFileJob.java
 ./primewriter/jobs/WriteLabelJob.java
+./primewriter/jobs/CounterWriterJob.java
 ./primewriter/jobs/ConsumptionJobList.java
 ./primewriter/jobs/StopWatchJob.java
 ./primewriter/App.java
