@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 
@@ -59,6 +60,8 @@ public class MainFrame extends JFrame {
     public void setVisible() {
         this.setTitle(APP_NAME);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(new Dimension(400, 300));
+
         Container contentPane = this.getContentPane();
 
         JPanel parentPanel = new JPanel();
