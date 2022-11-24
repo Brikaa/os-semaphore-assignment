@@ -1,3 +1,4 @@
+./primewriter/command/GeneratePrimesCommand.java
 ./primewriter/jobs/CounterJob.java
 ./primewriter/jobs/exceptions/JobCleanupException.java
 ./primewriter/jobs/exceptions/JobRunException.java

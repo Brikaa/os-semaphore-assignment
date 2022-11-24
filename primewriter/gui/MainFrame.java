@@ -17,6 +17,8 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
+import primewriter.command.GeneratePrimesCommand;
+
 public class MainFrame extends JFrame {
     private JLabel lastPrimeLabel;
     private JLabel counterLabel;
@@ -27,15 +29,23 @@ public class MainFrame extends JFrame {
     private JButton startButton;
     private static final String APP_NAME = "Prime writer";
 
-    public MainFrame(JLabel lastPrimeLabel, JLabel counterLabel, JLabel stopWatchLabel) {
+    public MainFrame(
+            GeneratePrimesCommand generatePrimesCommand) {
         super();
-        this.lastPrimeLabel = lastPrimeLabel;
-        this.counterLabel = counterLabel;
-        this.stopWatchLabel = stopWatchLabel;
+        this.lastPrimeLabel = new JLabel();
+        this.counterLabel = new JLabel();
+        this.stopWatchLabel = new JLabel();
         this.maximumNumberSpinner = new JSpinner(new SpinnerNumberModel(10000000, 2, 1000000000, 1));
         this.bufferSizeSpinner = new JSpinner(new SpinnerNumberModel(8, 2, 1000000000, 1));
         this.outputFileNameTextField = new JTextField("primes.txt");
         this.startButton = new JButton("Start producer");
+        this.startButton.addActionListener(e -> generatePrimesCommand.run(
+                outputFileNameTextField.getText(),
+                (Integer) maximumNumberSpinner.getValue(),
+                (Integer) bufferSizeSpinner.getValue(),
+                lastPrimeLabel,
+                stopWatchLabel,
+                counterLabel));
     }
 
     private void doubleGrid(JPanel parent, LinkedList<JComponent> components) {
