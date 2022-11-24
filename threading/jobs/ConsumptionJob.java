@@ -1,6 +1,6 @@
-package primewriter.jobs;
+package threading.jobs;
 
-import primewriter.jobs.exceptions.JobException;
+import threading.jobs.exceptions.JobException;
 
 public interface ConsumptionJob {
     public void initiate() throws JobException;

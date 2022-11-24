@@ -9,13 +9,13 @@ import primewriter.jobs.CounterWriterJob;
 import primewriter.jobs.DisableButtonJob;
 import primewriter.jobs.GeneratePrimeJob;
 import primewriter.jobs.PeriodicJob;
-import primewriter.jobs.ProductionJob;
 import primewriter.jobs.StopWatchJob;
 import primewriter.jobs.WriteFileJob;
 import primewriter.jobs.WriteLabelJob;
-import primewriter.threading.Buffer;
-import primewriter.threading.Producer;
-import primewriter.threading.Consumer;
+import threading.jobs.ProductionJob;
+import threading.synchronization.Buffer;
+import threading.synchronization.Consumer;
+import threading.synchronization.Producer;
 
 public class GeneratePrimesCommand {
     public void run(String outputFileName, int maximumNumber, int bufferSize, JLabel lastPrimeLabel,

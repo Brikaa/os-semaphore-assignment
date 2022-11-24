@@ -1,4 +1,4 @@
-package primewriter.jobs.exceptions;
+package threading.jobs.exceptions;
 
 public class JobCleanupException extends JobException {
     public JobCleanupException(String message) {

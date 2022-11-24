@@ -1,5 +1,7 @@
 package primewriter.jobs;
 
+import threading.jobs.ConsumptionJob;
+
 public class CounterJob implements ConsumptionJob {
     private int count;
 

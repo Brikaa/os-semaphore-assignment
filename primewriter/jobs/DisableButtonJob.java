@@ -2,6 +2,8 @@ package primewriter.jobs;
 
 import javax.swing.JButton;
 
+import threading.jobs.ConsumptionJob;
+
 public class DisableButtonJob implements ConsumptionJob {
     private JButton button;
 

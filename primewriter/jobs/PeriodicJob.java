@@ -1,6 +1,7 @@
 package primewriter.jobs;
 
-import primewriter.jobs.exceptions.JobException;
+import threading.jobs.ConsumptionJob;
+import threading.jobs.exceptions.JobException;
 
 public class PeriodicJob implements ConsumptionJob {
     private int runPeriod;

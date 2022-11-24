@@ -1,11 +1,13 @@
 package primewriter.jobs;
 
+import threading.jobs.ProductionJob;
+
 public class GeneratePrimeJob implements ProductionJob {
     private int maximumNumber;
     private int lastCheckedPrime;
     private boolean primes[];
     private boolean done;
-    private static int MAXIMUM_TO_SQUARE = 46340; // floor(sqrt(signed int32 positive limit))
+    private static final int MAXIMUM_TO_SQUARE = 46340; // floor(sqrt(signed int32 positive limit))
 
     public GeneratePrimeJob(int maximumNumber) {
         this.maximumNumber = maximumNumber;
@@ -21,7 +23,8 @@ public class GeneratePrimeJob implements ProductionJob {
     }
 
     private void fillPrimesUsingLastChecked() {
-        if (lastCheckedPrime > MAXIMUM_TO_SQUARE) return;
+        if (lastCheckedPrime > MAXIMUM_TO_SQUARE)
+            return;
         for (int i = lastCheckedPrime * lastCheckedPrime; i <= maximumNumber; i += lastCheckedPrime) {
             primes[i] = false;
         }

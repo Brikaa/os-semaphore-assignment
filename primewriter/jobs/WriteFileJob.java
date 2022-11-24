@@ -3,10 +3,11 @@ package primewriter.jobs;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import primewriter.jobs.exceptions.JobCleanupException;
-import primewriter.jobs.exceptions.JobException;
-import primewriter.jobs.exceptions.JobInitializationException;
-import primewriter.jobs.exceptions.JobRunException;
+import threading.jobs.ConsumptionJob;
+import threading.jobs.exceptions.JobCleanupException;
+import threading.jobs.exceptions.JobException;
+import threading.jobs.exceptions.JobInitializationException;
+import threading.jobs.exceptions.JobRunException;
 
 public class WriteFileJob implements ConsumptionJob {
     private String outputFileName;

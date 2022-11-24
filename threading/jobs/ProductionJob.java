@@ -1,4 +1,4 @@
-package primewriter.jobs;
+package threading.jobs;
 
 public interface ProductionJob {
     public void initiate();

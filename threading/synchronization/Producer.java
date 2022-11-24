@@ -1,6 +1,6 @@
-package primewriter.threading;
+package threading.synchronization;
 
-import primewriter.jobs.ProductionJob;
+import threading.jobs.ProductionJob;
 
 public class Producer implements Runnable {
     public static int DONE_SIGNAL = -1;

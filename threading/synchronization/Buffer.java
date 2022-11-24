@@ -1,4 +1,4 @@
-package primewriter.threading;
+package threading.synchronization;
 import java.util.LinkedList;
 import java.util.Queue;
 

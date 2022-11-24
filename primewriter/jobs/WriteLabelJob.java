@@ -2,6 +2,8 @@ package primewriter.jobs;
 
 import javax.swing.JLabel;
 
+import threading.jobs.ConsumptionJob;
+
 public class WriteLabelJob implements ConsumptionJob {
     JLabel label;
 

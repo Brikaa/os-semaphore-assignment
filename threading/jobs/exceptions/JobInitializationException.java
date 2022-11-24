@@ -1,4 +1,4 @@
-package primewriter.jobs.exceptions;
+package threading.jobs.exceptions;
 
 public class JobInitializationException extends JobException {
     public JobInitializationException(String message) {

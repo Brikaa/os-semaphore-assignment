@@ -1,4 +1,4 @@
-package primewriter.threading;
+package threading.synchronization;
 
 public class Semaphore {
     private int value;
