@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -39,14 +40,20 @@ public class MainFrame extends JFrame {
         this.bufferSizeSpinner = new JSpinner(new SpinnerNumberModel(8, 2, 1000000000, 1));
         this.outputFileNameTextField = new JTextField("primes.txt");
         this.startButton = new JButton("Start producer");
-        this.startButton.addActionListener(e -> generatePrimesCommand.run(
-                outputFileNameTextField.getText(),
-                (Integer) maximumNumberSpinner.getValue(),
-                (Integer) bufferSizeSpinner.getValue(),
-                lastPrimeLabel,
-                stopWatchLabel,
-                counterLabel,
-                startButton));
+        this.startButton.addActionListener(e -> {
+            if (outputFileNameTextField.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "The file name can't be empty");
+                return;
+            }
+            generatePrimesCommand.run(
+                    outputFileNameTextField.getText(),
+                    (Integer) maximumNumberSpinner.getValue(),
+                    (Integer) bufferSizeSpinner.getValue(),
+                    lastPrimeLabel,
+                    stopWatchLabel,
+                    counterLabel,
+                    startButton);
+        });
     }
 
     private void doubleGrid(JPanel parent, LinkedList<JComponent> components) {
