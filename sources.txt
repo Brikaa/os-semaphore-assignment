@@ -6,6 +6,7 @@
 ./primewriter/jobs/exceptions/JobException.java
 ./primewriter/jobs/ConsumptionJob.java
 ./primewriter/jobs/PeriodicJob.java
+./primewriter/jobs/DisableButtonJob.java
 ./primewriter/jobs/ProductionJob.java
 ./primewriter/jobs/GeneratePrimeJob.java
 ./primewriter/jobs/WriteFileJob.java

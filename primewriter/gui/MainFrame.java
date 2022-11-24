@@ -45,7 +45,8 @@ public class MainFrame extends JFrame {
                 (Integer) bufferSizeSpinner.getValue(),
                 lastPrimeLabel,
                 stopWatchLabel,
-                counterLabel));
+                counterLabel,
+                startButton));
     }
 
     private void doubleGrid(JPanel parent, LinkedList<JComponent> components) {

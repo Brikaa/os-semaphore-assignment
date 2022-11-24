@@ -1,10 +1,12 @@
 package primewriter.command;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import primewriter.jobs.ConsumptionJobList;
 import primewriter.jobs.CounterJob;
 import primewriter.jobs.CounterWriterJob;
+import primewriter.jobs.DisableButtonJob;
 import primewriter.jobs.GeneratePrimeJob;
 import primewriter.jobs.PeriodicJob;
 import primewriter.jobs.ProductionJob;
@@ -17,7 +19,7 @@ import primewriter.threading.Consumer;
 
 public class GeneratePrimesCommand {
     public void run(String outputFileName, int maximumNumber, int bufferSize, JLabel lastPrimeLabel,
-            JLabel stopWatchLabel, JLabel counterLabel) {
+            JLabel stopWatchLabel, JLabel counterLabel, JButton button) {
         ConsumptionJobList cJobList = new ConsumptionJobList();
         CounterJob counterJob = new CounterJob();
         cJobList
@@ -25,7 +27,8 @@ public class GeneratePrimesCommand {
                 .addJob(counterJob)
                 .addJob(new PeriodicJob(new WriteLabelJob(lastPrimeLabel), 500))
                 .addJob(new PeriodicJob(new StopWatchJob(stopWatchLabel), 500))
-                .addJob(new PeriodicJob(new CounterWriterJob(counterLabel, counterJob), 500));
+                .addJob(new PeriodicJob(new CounterWriterJob(counterLabel, counterJob), 500))
+                .addJob(new DisableButtonJob(button));
 
         Buffer buffer = new Buffer(bufferSize);
         ProductionJob generatePrime = new GeneratePrimeJob(maximumNumber);
@@ -36,11 +39,5 @@ public class GeneratePrimesCommand {
         Thread consumerThread = new Thread(consumer);
         producerThread.start();
         consumerThread.start();
-        // try {
-        //     producerThread.join();
-        //     consumerThread.join();
-        // } catch (InterruptedException e) {
-        //     System.out.println(e);
-        // }
     }
 }
