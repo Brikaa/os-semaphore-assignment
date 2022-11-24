@@ -61,28 +61,41 @@ public class MainFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container contentPane = this.getContentPane();
 
+        JPanel parentPanel = new JPanel();
+        contentPane.add(parentPanel);
+        parentPanel.setLayout(new GridBagLayout());
+        GridBagConstraints parentConstraints = new GridBagConstraints();
+        parentConstraints.fill = GridBagConstraints.HORIZONTAL;
+        parentConstraints.insets.left = 10;
+        parentConstraints.insets.top = 25;
+        parentConstraints.gridy = 0;
+        parentConstraints.gridx = 0;
+
         JPanel inputPanel = new JPanel();
-        contentPane.add(inputPanel);
+        parentPanel.add(inputPanel, parentConstraints);
         inputPanel.setLayout(new GridBagLayout());
 
         doubleGrid(
-            inputPanel, new LinkedList<JComponent>(Arrays.asList(
-                new JLabel("Maximum number"),
-                maximumNumberSpinner,
-                new JLabel("Buffer size"),
-                bufferSizeSpinner,
-                new JLabel("Output file"),
-                outputFileNameTextField,
-                startButton
-            ))
-        );
+                inputPanel, new LinkedList<JComponent>(Arrays.asList(
+                        new JLabel("Maximum number"),
+                        maximumNumberSpinner,
+                        new JLabel("Buffer size"),
+                        bufferSizeSpinner,
+                        new JLabel("Output file"),
+                        outputFileNameTextField,
+                        startButton)));
 
-        // JPanel outputPanel = new JPanel();
-        // contentPane.add(outputPanel);
-        // outputPanel.setLayout(new GridBagLayout());
-        // GridBagConstraints outputPanelConstraints = new GridBagConstraints();
-
-
+        parentConstraints.gridy = 1;
+        JPanel outputPanel = new JPanel();
+        parentPanel.add(outputPanel, parentConstraints);
+        outputPanel.setLayout(new GridBagLayout());
+        doubleGrid(outputPanel, new LinkedList<JComponent>(Arrays.asList(
+                new JLabel("Largest prime number: "),
+                lastPrimeLabel,
+                new JLabel("Number of prime numbers generated: "),
+                counterLabel,
+                new JLabel("Time elapsed: "),
+                stopWatchLabel)));
 
         this.setVisible(true);
     }
